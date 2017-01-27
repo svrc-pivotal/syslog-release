@@ -1,0 +1,15 @@
+---
+name: omkafka
+
+dependencies:
+- librdkafka
+
+files:
+- rsyslog/rsyslog-8.22.0.tar.gz
+- trusty/libestr-dev_0.1.10-0adiscon1trusty1_amd64.deb
+- trusty/libestr0_0.1.10-0adiscon1trusty1_amd64.deb
+- trusty/libfastjson-dev_0.99.4-adiscon1trusty1_amd64.deb
+- trusty/libfastjson4_0.99.4-adiscon1trusty1_amd64.deb
+- trusty/libjson-c-dev_0.11-3ubuntu1.2_amd64.deb
+
+

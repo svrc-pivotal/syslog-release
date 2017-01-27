@@ -10,6 +10,9 @@ chmod 0755 ${LOGDIR}
 mkdir -p /var/vcap/data/syslog_forwarder/buffered
 chown -R syslog:adm /var/vcap/data/syslog_forwarder/buffered
 
+ln -sf /var/vcap/packages/omkafka/omkafka.so /usr/lib/rsyslog/omkafka.so
+ln -sf /var/vcap/packages/omkafka/omkafka.la /usr/lib/rsyslog/omkafka.la
+
 mkdir -p /etc/rsyslog.d
 cp $(dirname $0)/../config/rsyslog.conf /etc/rsyslog.d/rsyslog.conf
 service rsyslog restart

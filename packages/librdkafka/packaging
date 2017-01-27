@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Available variables
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+
+LIBRDKAFKA_VERSION=0.9.3
+
+TMP=$(mktemp --directory --tmpdir=$BOSH_COMPILE_TARGET)
+LIBRDKAFKA_DIR=$TMP/librdkafka_src/
+
+# Build and install librdkafka
+mkdir -p $LIBRDKAFKA_DIR
+tar -xf ${BOSH_COMPILE_TARGET}/librdkafka/librdkafka-${LIBRDKAFKA_VERSION}.tar.gz --strip-components=1  --directory $LIBRDKAFKA_DIR
+cd $LIBRDKAFKA_DIR
+./configure --enable-ssl --prefix=${BOSH_INSTALL_TARGET}
+make
+make install

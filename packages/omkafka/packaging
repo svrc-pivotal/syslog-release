@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+
+# abort script on any command that exits with a non zero value
+# and report the usage of uninitialized variables
+set -euo pipefail
+
+# Declare rsyslog version which is used for building omkafka module
+OMKAFKA_VERSION=8.22.0
+
+# Declare versions of dependencies
+LIBESTR_VERSION=0.1.10-0adiscon1trusty1
+#LIBJSON_C_VERSION=0.11-3ubuntu1.2
+LIBFASTJSON_VERSION=0.99.4-adiscon1trusty1
+
+# Install detected versions of dependencies to build rsyslog
+DEBS=""
+DEBS="$DEBS ${BOSH_COMPILE_TARGET}/trusty/libestr0_${LIBESTR_VERSION}_amd64.deb" || true
+DEBS="$DEBS ${BOSH_COMPILE_TARGET}/trusty/libestr-dev_${LIBESTR_VERSION}_amd64.deb" || true
+#DEBS="$DEBS ${BOSH_COMPILE_TARGET}/trusty/libjson-c-dev_${LIBJSON_C_VERSION}_amd64.deb" || true
+DEBS="$DEBS ${BOSH_COMPILE_TARGET}/trusty/libfastjson-dev_${LIBFASTJSON_VERSION}_amd64.deb" || true
+DEBS="$DEBS ${BOSH_COMPILE_TARGET}/trusty/libfastjson4_${LIBFASTJSON_VERSION}_amd64.deb" || true
+dpkg -i $DEBS
+
+LIBRDKAFKA_DIR=/var/vcap/packages/librdkafka
+
+TMP=$(mktemp --directory --tmpdir=$BOSH_COMPILE_TARGET)
+DEST=$TMP/dest
+RSYSLOG_DIR=$TMP/rsyslog_src/
+#LIBFASTJSON_DIR=$TMP/libfastjson_src/
+
+
+# Build rsyslog (we only build it to have omkafka plugin)
+mkdir -p $RSYSLOG_DIR
+tar -xf ${BOSH_COMPILE_TARGET}/rsyslog/rsyslog-${OMKAFKA_VERSION}.tar.gz --strip-components=1 --directory $RSYSLOG_DIR
+cd $RSYSLOG_DIR
+export LIBRDKAFKA_CFLAGS=${LIBRDKAFKA_DIR}/include
+export LIBRDKAFKA_LIBS=${LIBRDKAFKA_DIR}/lib
+export JSON_C_LIBS=/usr/lib/libfastjson.so
+export JSON_C_CFLAGS=-I/usr/include/libfastjson
+export CPATH=${LIBRDKAFKA_DIR}/include
+export LIBRARY_PATH=${LIBRDKAFKA_DIR}/lib
+
+./configure --prefix=/usr --enable-omkafka --disable-uuid --disable-liblogging-stdlog --disable-generate-man-pages --disable-libgcrypt
+make
+make DESTDIR=$DEST install
+
+# Install omkafka plugin
+cp $DEST/usr/lib/rsyslog/omkafka.so ${BOSH_INSTALL_TARGET}/omkafka.so
+cp $DEST/usr/lib/rsyslog/omkafka.la ${BOSH_INSTALL_TARGET}/omkafka.la
