@@ -2,5 +2,5 @@
 blobstore:
   provider: s3
   options:
-    bucket_name: syslog-release-blobs
+    bucket_name: syslog-blobs-svrc
 final_name: syslog
