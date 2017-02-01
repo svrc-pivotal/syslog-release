@@ -1,2 +1,33 @@
 ---
-{}
+golang/go1.7.3.linux-amd64.tar.gz:
+  object_id: 8b9f4d8c-c28c-471d-b898-be9f984a8466
+  sha: ead40e884ad4d6512bcf7b3c7420dd7fa4a96140
+  size: 82565628
+librdkafka/librdkafka-0.9.3.tar.gz:
+  object_id: 40a85f27-8b82-48c0-9a1e-e6ca99996ff5
+  sha: 4cd64ae5660ba0e2ceff935691852fb55510ee5e
+  size: 637066
+rsyslog/rsyslog-8.22.0.tar.gz:
+  object_id: 7a8ef26c-7490-4a26-b29b-7155e1eaee68
+  sha: 4805628cfed4c6fa6941e7b988886ecd3d911966
+  size: 2259652
+trusty/libestr-dev_0.1.10-0adiscon1trusty1_amd64.deb:
+  object_id: 9860ac60-36de-4444-8964-ad0c9d294275
+  sha: 959228b50d87c30dfb29465a504995ea99ffedf9
+  size: 10862
+trusty/libestr0_0.1.10-0adiscon1trusty1_amd64.deb:
+  object_id: d42cfac8-b239-4fd1-a5ed-28be78f3c70f
+  sha: 4e8d25275e85c42e5cd4adae3d4a622ca1196531
+  size: 7266
+trusty/libfastjson-dev_0.99.4-adiscon1trusty1_amd64.deb:
+  object_id: ca5cd178-6936-442f-bbb3-d164abbb2b96
+  sha: 55255c6e9756f79dca32a3af402d185c98289844
+  size: 31062
+trusty/libfastjson4_0.99.4-adiscon1trusty1_amd64.deb:
+  object_id: 93bd88c5-ebaa-4d5c-894a-949fd592f77f
+  sha: a43c8cf956406b35190f6da8645040eef40677ae
+  size: 17082
+trusty/libjson-c-dev_0.11-3ubuntu1.2_amd64.deb:
+  object_id: 0485ff93-e031-4089-a6d1-928c4941c22a
+  sha: 18803786c377bce69f1df6491d9b2f5b594d3c16
+  size: 30190

@@ -1,0 +1,41 @@
+---
+packages:
+- name: blackbox
+  version: 74056b9e5346ca2c77539390e0fd45c867569be2
+  fingerprint: 74056b9e5346ca2c77539390e0fd45c867569be2
+  sha1: 730fbd00f27d25072a8f717d3dd0cfad89d7021f
+  dependencies:
+  - golang
+- name: golang
+  version: 5ee67e992569fbef2bfd303709cc345dfaa71d29
+  fingerprint: 5ee67e992569fbef2bfd303709cc345dfaa71d29
+  sha1: 54acf1a3db12db71d5495600bcabcbd55cf6e967
+  dependencies: []
+- name: librdkafka
+  version: 86fcdf3cb72721d5aba9cec7a45d535eda687ee3
+  fingerprint: 86fcdf3cb72721d5aba9cec7a45d535eda687ee3
+  sha1: 7eb78f3e007a804b41cdd740662939de45b8784e
+  dependencies: []
+- name: omkafka
+  version: 3789bb552e5b6ca0ec7013c8a34d874c9ea061fc
+  fingerprint: 3789bb552e5b6ca0ec7013c8a34d874c9ea061fc
+  sha1: 6f249be9bd6ae05f4d1387cbecd899938819569e
+  dependencies:
+  - librdkafka
+jobs:
+- name: syslog_forwarder
+  version: 8adbf2c235714d3829ee020077e2eadf2a446677
+  fingerprint: 8adbf2c235714d3829ee020077e2eadf2a446677
+  sha1: b0ef5d01db6420037999b20be26ad7a9d0ac70d7
+- name: syslog_storer
+  version: cf705811bf6b1e707cd8e9c45e51badacffbf3fc
+  fingerprint: cf705811bf6b1e707cd8e9c45e51badacffbf3fc
+  sha1: 4b1db484da8b02b51672e4b00ee2697da083af35
+license:
+  version: 92d787bc0daf268049dde988188dfb323c2d110e
+  fingerprint: 92d787bc0daf268049dde988188dfb323c2d110e
+  sha1: 8974dd7c32c4592ee0a81767adb30a7e970852f9
+commit_hash: ac9faa01
+uncommitted_changes: true
+name: syslog
+version: 9.omkafka
