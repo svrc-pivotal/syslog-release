@@ -20,4 +20,6 @@ builds:
     version: '2'
   4a045717-917d-418e-8eb4-4adcb314571a:
     version: 9.omkafka
+  8d7af2fa-28ce-4673-9f68-dd0179e46217:
+    version: 9.omkafka2
 format-version: '2'
